@@ -1,0 +1,357 @@
+/*this block makes sure that all elements use border-box and makes layout consistent*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*sets my font and adds my carbon fiber background*/
+
+
+body {
+    margin: 0;
+    font-family: 'Orbitron Black', Orbitron, sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+    background-image: repeating-linear-gradient(
+        45deg,
+        #111 0,
+        #111 10px,
+         #1a1a1a 10px,
+        #1a1a1a 20px
+    );
+}
+/*Sets the main colors for the site*/
+
+:root {
+    --accent: #791f1f;
+    --accent-glow: #791f1f;
+    --dark: #111;
+     --card-bg: #1a1a1a;
+}
+/*creates the navigation bar and adds the glow effect*/
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+     background: linear-gradient(90deg, #000, #1a0000, #000);
+    border-bottom: 2px solid var(--accent);
+    box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.4);
+}
+/*This design sets the red glowing logo*/
+
+.logo {
+    font-size: 1.8em;
+     text-transform: uppercase;
+    font-weight: bold;
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+/*Sets the Nav links*/
+
+.main-nav ul {
+ display: flex;
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+     margin: 0;
+    white-space: nowrap;
+}
+/*makes the menu items horizontal*/
+
+.main-nav a {
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: 0.25s ease;
+}
+
+.main-nav a:hover {
+    background: var(--accent);
+    box-shadow: 0px 0px 10px var(--accent-glow);
+}
+
+.main-nav a.active {
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+/*Creates the mobile haburger menu*/
+
+.hamburger {
+    display: none;
+    background: none;
+    border:  none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+#nav-links {
+    transition: 0.3s ease;
+}
+
+#nav-links.show {
+    display: flex !important;
+}
+/*Creates glowing hero banner*/
+
+.hero {
+    background: #222;
+    padding: 70px 20px;
+    text-align: center;
+    color: white;
+    border-bottom: 3px solid var(--accent);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+}
+
+.hero h2 {
+    font-size: 2.3em;
+    text-shadow: 0 0 12px black;
+}
+
+.hero p {
+    font-size: 1.3em;
+    opacity: 0.9;
+}
+/*Creates the main content container*/
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    color: #ddd;
+    border: 2px solid #333;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.15);
+}
+
+h2, h3 {
+    color: var(--accent);
+    text-transform: uppercase;
+    text-shadow: 0 0 8px var(--accent-glow);
+}
+/*frames and sizes images*/
+
+.topic-image, .profile-photo {
+    width: 100%;
+    border-radius: 10px;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+    margin: 20px 0;
+}
+/*creates tables*/
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background: var(--accent);
+    padding: 12px;
+    text-transform: uppercase;
+    color: white;
+    border-bottom: 2px solid #600;
+}
+
+td {
+    padding: 12px;
+    background: #111;
+    border-bottom: 1px solid #333;
+}
+
+tr:hover td {
+    background: #1d1d1d;
+}
+
+.key-concepts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+}
+
+.key-concepts-grid div {
+    background: #111;
+    padding: 16px;
+    border-radius: 10px;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    transition: 0.25s ease;
+}
+
+.key-concepts-grid div:hover {
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+}
+/*creates amd styles quiz container*/
+
+.quiz-container {
+    background: rgb(0, 0, 0);
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.question {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    background: #971010;
+}
+
+.correct {
+    color: green;
+    font-weight: bold;
+}
+
+.incorrect {
+     color: red;
+    font-weight: bold;
+}
+
+#results {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 8px;
+    background: #f4f4f4;
+    color: black;
+}
+
+button {
+    background: var(--accent);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+button:hover {
+    box-shadow: 0 0 15px var(--accent-glow);
+    transform: scale(1.05);
+}
+/*formats input text*/
+
+input[type=text],
+input[type=radio],
+input[type=checkbox] {
+    accent-color: var(--accent);
+}
+
+input[type=text] {
+    width: 60%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 2px solid #333;
+    background: #0f0f0f;
+    color: white;
+}
+/*creates footer*/
+
+footer {
+    background: #000;
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+    border-top: 2px solid var(--accent);
+    margin-top: 40px;
+    box-shadow: 0 -5px 20px rgba(255, 0, 0, 0.3);
+}
+
+footer a {
+    color: var(--accent);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+/*sets max width to 900px for mobile*/
+
+@media (max-width: 900px) {
+    .container {
+        width: 90%;
+    }
+
+    .topic-image {
+        width: 100%;
+    }
+
+    table {
+        font-size: 0.9em;
+    }
+}
+/*Sets max width to 600px*/
+
+@media (max-width: 600px) {
+
+    .hamburger {
+        display: block;
+    }
+
+    .main-nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #111;
+        border-top: 2px solid var(--accent);
+        padding: 10px 0;
+    }
+
+    .main-nav ul.show {
+        display: flex;
+    }
+
+    .logo {
+        font-size: 1.3em;
+    }
+
+    input[type=text] {
+        width: 100%;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+}
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 70px 20px;
+    border-bottom: 3px solid var(--accent);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+}
+/*Allows background image in hero banner*/
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: 0;
+    opacity: 0.5;
+}
+
+.hero h2,
+.hero p {
+    position: relative;
+    z-index: 1; 
+}
