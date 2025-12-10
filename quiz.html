@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car feature Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quiz-container {
+            background: rgb(0, 0, 0);
+            padding: 25px;
+            border-radius: 8px;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+f
+        .question {
+            margin-bottom: 20px;
+             padding: 15px;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            background: #971010;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+             font-weight: bold;
+        }
+
+        #results {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f4f4f4;
+        }
+
+        .retake-btn {
+            margin-top: 15px;
+            background: #ff0000;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .retake-btn:hover {
+            background: #cc0000;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="main-nav">
+    <h1 class="logo">Greatest Cars of All Time</h1>
+    <ul>
+        <li><a href= "index.html">Home</a></li>
+        <li><a href= "topic1.html">Topic 1</a></li>
+        <li><a href="topic2.html">Topic 2</a></li>
+        <li><a href="key-concepts.html">Key Concepts</a></li>
+        <li><a href= "sources.html">References</a></li>
+        <li><a href="quiz.html" class="active">Quiz</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+</nav>
+
+<main class="quiz-container">
+    <h2>Self-Assessment Quiz — Nissan GT-R Nismo & Mercedes-AMG GT R</h2>
+    <p>Test your knowledge! Passing score: <strong>70%</strong></p>
+
+    <form id="quizForm">
+
+        <div class="question">
+            <p><strong>1. Fill in the blank:</strong>  
+               The Nissan GT-R Nismo produces <em>_____ horsepower</em>.</p>
+            <input type="text" id="q1" placeholder="Enter a number">
+        </div>
+  
+        <div class="question">
+            <p><strong>2. Which engine does the Mercedes-AMG GT R use?</strong></p>
+            <label><input type = "radio" name="q2" value="a"> 5.2L V10</label><br>
+            <label><input type = "radio" name="q2" value="b"> 4.0L Twin-Turbo V8</label><br>
+            <label><input type ="radio" name="q2" value="c"> 6.2L Supercharged V8</label>
+        </div>
+        <div class="question">
+            <p><strong>3. What drivetrain does the GT-R Nismo use?</strong></p>
+            <label><input type="radio" name="q3"  value="a"> RWD</label><br>
+            <label><input type="radio" name="q3" value="b"> FWD</label><br>
+            <label><input type="radio" name="q3" value="c"> AWD</label>
+        </div>
+        <div class="question">
+            <p><strong>4. What is the AMG GT R mainly designed for?</strong></p>
+            <label><input type="radio" name="q4"  value="a"> Off-roading</label><br>
+            <label><input type="radio" name="q4" value="b"> Track performance</label><br>
+            <label><input type="radio" name="q4" value="c"> Heavy towing</label>
+        </div>
+        <div class="question">
+            <p><strong>5. Select all features that the GT-R Nismo includes:</strong></p>
+            <label><input type="checkbox" name="q5" value="a"> Carbon fiber components</label><br>
+            <label><input type="checkbox" name="q5" value="b"> AWD system</label><br>
+            <label><input type="checkbox" name="q5" value="c"> Rear-wheel steering</label><br>
+            <label><input type="checkbox" name="q5" value="d"> Twin-turbo V6</label>
+        </div>
+
+        <button type="button" onclick="gradeQuiz()">Submit Quiz</button>
+    </form>
+
+    <div id="results"></div>
+</main>
+
+<script>
+function gradeQuiz() {
+    let score = 0;
+    let total = 5;
+    let output = "<h3>Results</h3>";
+
+    const answers = {
+        q1: "600",
+        q2: "b",
+        q3: "c",
+        q4: "b",
+        q5: ["a", "b", "d"] 
+    };
+
+    let q1 = document.getElementById("q1").value.trim();
+    if (q1 === answers.q1) score++;
+    output +=  `<p>1. Your answer:  ${q1 || "(none)"} — ${
+        q1 === answers.q1 ? "<span class='correct'>Correct</span>" 
+        : "<span class='incorrect'>Incorrect</span>"
+    } (Correct: 600 HP)</p>`;
+
+    let q2 = document.querySelector("input[name='q2']:checked");
+    let q2val = q2 ? q2.value : "";
+    if (q2val === answers.q2) score++;
+    output += `<p>2. ${
+        q2val ? "Your answer: " + q2val : "(no answer)"
+    } — ${q2val === answers.q2 ? "<span class='correct'>Correct</span>" : "<span class='incorrect'>Incorrect</span>"} (Correct: 4.0L Twin-Turbo V8)</p>`;
+
+    let q3 = document.querySelector("input[name='q3']:checked");
+    let q3val = q3 ? q3.value : "";
+    if (q3val == answers.q3) score++;
+    output += `<p>3. ${
+        q3val ? "Your answer: " + q3val : "(no answer)"
+    } — ${q3val === answers.q3 ? "<span class='correct'>Correct</span>" : "<span class='incorrect'>Incorrect</span>"} (Correct: AWD)</p>`;
+
+    let q4 = document.querySelector("input[name='q4']:checked");
+    let q4val = q4 ? q4.value : "";
+    if (q4val === answers.q4) score++;
+    output += `<p>4. ${
+        q4val ? "Your answer: " + q4val : "(no answer)"
+    } — ${q4val == answers.q4 ? "<span class='correct'>Correct</span>" : "<span class='incorrect'>Incorrect</span>"} (Correct: Track performance)</p>`;
+
+    let q5 = Array.from(document.querySelectorAll("input[name='q5']:checked")).map(x => x.value);
+    let correctQ5 = answers.q5;
+    let correctCount = q5.filter(v => correctQ5.includes(v)).length;
+
+    if (correctCount ===  correctQ5.length && q5.length === correctQ5.length) score++;
+
+    output += `<p>5. Your answers: ${q5.join(", ") || "(none)"} — ${
+        correctCount === correctQ5.length && q5.length === correctQ5.length
+        ? "<span class='correct'>Correct</span>"
+        : "<span class='incorrect'>Incorrect</span>"
+    } (Correct: a, b, d)</p>`;
+
+    let percentage = (score / total) * 100;
+    output +=  `<h3>Score: ${score}/${total} (${percentage.toFixed(1)}%)</h3>`;
+    output += `<h3>Result: ${
+        percentage >= 70 
+        ?   "<span class='correct'>PASS</span>" 
+        : "<span class='incorrect'>FAIL</span>"
+    }</h3>`;
+
+    output += `<button class="retake-btn" onclick="resetQuiz()">Retake Quiz</button>`;
+
+    document.getElementById("results").innerHTML = output;
+}
+function resetQuiz() {
+    document.getElementById("quizForm").reset();
+    document.getElementById("results").innerHTML = "";
+}
+</script>
+
+</body>
+</html>
